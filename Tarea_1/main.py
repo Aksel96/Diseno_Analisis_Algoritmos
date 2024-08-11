@@ -51,8 +51,10 @@ nodo2.set_abajo(nodo4)
 nodo4.set_centro(nodo5)
 
 print("---------- OBTENER EL 99 -----------")
+print(f"{head.get_valor()} -> {head.get_centro().get_valor()}  ->  {head.get_centro().get_abajo().get_valor()} ->  "
+      f"{head.get_centro().get_abajo().get_centro().get_valor()}")
 print(head.get_centro().get_abajo().get_centro().get_valor())
 
 print("---------- OBTENER EL 57 -----------")
+print(f"{head.get_valor()} -> {head.get_arriba().get_valor()}  ->  {head.get_arriba().get_centro().get_valor()}")
 print(head.get_arriba().get_centro().get_valor())
-
