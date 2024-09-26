@@ -1,16 +1,4 @@
-def verificar_numero_cuenta(numero):
-    try:
-        numero_int = int(numero)
-
-        if 313999999 <= numero_int <= 324999999:
-            return True
-        else:
-            print(f"El numero \"{numero}\" no es un numero de cuenta valido")
-            return False
-    except ValueError:
-        print(f"Caracter Invalido")
-        return False
-
+from generadores import verificar_numero_cuenta
 
 def es_numero(numero):
     try:
