@@ -105,7 +105,7 @@ def main():
                 print("-#-    Y esta entre el rango de 314000000 a 324999999")
                 print("###################################################################\n")
                 num_buscar = input("-#-    Ingrese el numero de cuenta: ")
-                while not verificar_numero_cuenta(num_buscar):
+                while not verificar_numero_cuenta_correcto(num_buscar):
                     num_buscar = input("-#-    Ingrese nuevamente el numero de cuenta: ")
                 arbol.buscar(arbol.raiz, int(num_buscar))
             case 3:
