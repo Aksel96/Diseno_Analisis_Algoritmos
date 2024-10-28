@@ -69,28 +69,29 @@ def buscar_entrada(laberinto, entrada):
 
 
 def main():
-    laberinto = leer_laberinto()
-    coor_x_entrada, coor_y_entrada = buscar_entrada(laberinto, 'E')
+    laberinto = leer_laberinto()  # -> 1)
+    laberinto_ori = leer_laberinto()
+    coor_x_entrada, coor_y_entrada = buscar_entrada(laberinto, 'E')  # -> 2)
 
-    if coor_x_entrada is None or coor_y_entrada is None:
+    if coor_x_entrada is None or coor_y_entrada is None:  # -> 3)
         print("El laberinto no tiene una entrada")
         return
 
-    pila.append((coor_x_entrada, coor_y_entrada))
+    pila.append((coor_x_entrada, coor_y_entrada))  # -> 4)
 
-    laberinto[coor_x_entrada][coor_y_entrada] = 'y'
+    laberinto[coor_x_entrada][coor_y_entrada] = 'y'  # -> 5)
 
-    solucion_encontrada = False
+    solucion_encontrada = False  # -> 6)
 
-    num_movimientos = 0
+    num_movimientos = 0  # -> 7)
 
-    while pila and not solucion_encontrada:
-        num_movimientos += 1
+    while pila and not solucion_encontrada:  # -> 8)
+        num_movimientos += 1  # -> 9)
 
-        x, y = pila[-1]
+        x, y = pila[-1]  # -> 10)
 
-        nueva_posicion = mover_izquierda(laberinto, x, y)
-        if nueva_posicion:
+        nueva_posicion = mover_izquierda(laberinto, x, y)  # -> 11)
+        if nueva_posicion:  # -> 12)
             nueva_x, nueva_y = nueva_posicion
             if laberinto[nueva_x][nueva_y] == 's':
                 laberinto[nueva_x][nueva_y] = 'O'
@@ -100,8 +101,8 @@ def main():
                 pila.append((nueva_x, nueva_y))
                 continue
 
-        nueva_posicion = mover_arriba(laberinto, x, y)
-        if nueva_posicion:
+        nueva_posicion = mover_arriba(laberinto, x, y)  # -> 13)
+        if nueva_posicion:  # -> 14)
             nueva_x, nueva_y = nueva_posicion
             if laberinto[nueva_x][nueva_y] == 's':
                 laberinto[nueva_x][nueva_y] = 'O'
@@ -111,8 +112,8 @@ def main():
                 pila.append((nueva_x, nueva_y))
                 continue
 
-        nueva_posicion = mover_derecha(laberinto, x, y)
-        if nueva_posicion:
+        nueva_posicion = mover_derecha(laberinto, x, y)  # -> 15)
+        if nueva_posicion:  # -> 16)
             nueva_x, nueva_y = nueva_posicion
             if laberinto[nueva_x][nueva_y] == 's':
                 laberinto[nueva_x][nueva_y] = 'O'
@@ -122,8 +123,8 @@ def main():
                 pila.append((nueva_x, nueva_y))
                 continue
 
-        nueva_posicion = mover_abajo(laberinto, x, y)
-        if nueva_posicion:
+        nueva_posicion = mover_abajo(laberinto, x, y)  # -> 17)
+        if nueva_posicion:  # -> 18)
             nueva_x, nueva_y = nueva_posicion
             if laberinto[nueva_x][nueva_y] == 's':
                 laberinto[nueva_x][nueva_y] = 'O'
@@ -133,11 +134,14 @@ def main():
                 laberinto[nueva_x][nueva_y] = 'y'
                 pila.append((nueva_x, nueva_y))
                 continue
-        if not solucion_encontrada:
+        if not solucion_encontrada:  # -> 19)
             laberinto[x][y] = 'x'
             pila.pop()
 
-    if solucion_encontrada:
+    print("Laberinto Original:")
+    pintar_laberinto(laberinto_ori)
+
+    if solucion_encontrada:  # -> 20)
         print(f"Se encontro una solucion con un total de {num_movimientos} movimientos:")
     else:
         print("No se encontro ninguna solucion")
